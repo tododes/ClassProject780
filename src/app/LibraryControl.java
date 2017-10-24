@@ -13,11 +13,11 @@ import utils.FileManager;
 import utils.LibraryUtils;
 
 public class LibraryControl {
-	//zmienna do komunikacji z użytkownikiem
+	//variable for communication with the user
 	private DataReader dataReader;
 	private FileManager fileManager;
 	
-	//"biblioteka" przechowująca dane
+	//"library" that stores data
 	private Library library;
 	
 	public LibraryControl() {
@@ -25,15 +25,15 @@ public class LibraryControl {
         fileManager = new FileManager();
         try {
             library = fileManager.readLibraryFromFile();
-            System.out.println("Wczytano dane biblioteki z pliku ");
+            System.out.println("Data loaded from the file ");
         } catch (ClassNotFoundException | IOException e) {
             library = new Library();
-            System.out.println("Utworzono nową bazę biblioteki.");
+            System.out.println("New library database created.");
         }
     }
 	
 	/*
-     * Główna pętla programu, która pozwala na wybór opcji i interakcję
+     * Main loop program that allows you to select options and interact
      */
     public void controlLoop() {
         Option option = null;
@@ -64,17 +64,17 @@ public class LibraryControl {
                     exit();
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Wprowadzono niepoprawne dane, publikacji nie dodano");
+                System.out.println("Incorrect data entered, no publication added.");
             } catch (NumberFormatException | NoSuchElementException e) {
-                System.out.println("Wybrana opcja nie istnieje, wybierz ponownie:");
+                System.out.println("The selected option does not exist, select again:");
             }
         }
-        // zamykamy strumień wejścia
+        // we close the input stream
         dataReader.close();
     }
 	
 	private void printOptions() {
-        System.out.println("Wybierz opcję: ");
+        System.out.println("Select an option:  ");
         for(Option o : Option.values()) {
             System.out.println(o);
         }
@@ -112,13 +112,13 @@ public class LibraryControl {
     }
     
     private enum Option {
-        EXIT(0, "Wyjście z programu"),
-        ADD_BOOK(1, "Dodanie książki"),
-        ADD_MAGAZINE(2,"Dodanie magazynu/gazety"),
-        PRINT_BOOKS(3, "Wyświetlenie dostępnych książek"),
-        PRINT_MAGAZINES(4, "Wyświetlenie dostępnych magazynów/gazet"),
-        ADD_USER(5, "Dodanie nowego użytkownika"),
-        PRINT_USERS(6, "Wyświetlenie listy użytkowników");
+      	EXIT(0, "Exit program"),
+        ADD_BOOK(1, "Add a book"),
+        ADD_MAGAZINE(2,"Adding a magazine / newspaper"),
+        PRINT_BOOKS(3, "View available books"),
+        PRINT_MAGAZINES(4, "Display of available magazines / newspapers"),
+        ADD_USER(5, "Add a new user"),
+        PRINT_USERS(6, "Display the list of users");
       
         private int value;
         private String description;
@@ -138,7 +138,7 @@ public class LibraryControl {
             try {
                 result = Option.values()[option];
             } catch(ArrayIndexOutOfBoundsException e) {
-                throw new NoSuchElementException("Brak elementu o wskazanym ID");
+                throw new NoSuchElementException("No element specified ID");
             }
               
             return result;
