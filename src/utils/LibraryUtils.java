@@ -21,7 +21,7 @@ public class LibraryUtils {
     			.filter(cl::isInstance).sorted(new Library.AlphabeticalComparator())
     			.peek(System.out::println).count();
     	if(countPublications == 0) {
-    		System.out.println("W bibliotece nie znaleziono publikacji typu: " + cl.getSimpleName());
+    		System.out.println("No type publication was found in the library: " + cl.getSimpleName());
     	}
     }
     
