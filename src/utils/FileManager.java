@@ -21,9 +21,9 @@ public class FileManager {
             oos.writeObject(lib);
              
         } catch (FileNotFoundException e) {
-            System.err.println("Nie odnaleziono pliku " + FILE_NAME);
+            System.err.println("File not found " + FILE_NAME);
         } catch (IOException e) {
-            System.err.println("Błąd podczas zapisu danych do pliku " + FILE_NAME);
+            System.err.println("Error writing to file " + FILE_NAME);
         }
     }
      
@@ -37,13 +37,13 @@ public class FileManager {
             library = (Library)ois.readObject();
              
         } catch (FileNotFoundException e) {
-            System.err.println("Nie odnaleziono pliku " + FILE_NAME);
+            System.err.println("File not found " + FILE_NAME);
             throw e;
         } catch (IOException e) {
-            System.err.println("Błąd podczas zapisu danych do pliku " + FILE_NAME);
+            System.err.println("Error writing to file " + FILE_NAME);
             throw e;
         } catch (ClassNotFoundException e) {
-            System.err.println("Nieprawidłowy format pliku");
+            System.err.println("Invalid file format");
             throw e;
         }
          
