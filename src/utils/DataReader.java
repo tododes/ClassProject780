@@ -24,7 +24,7 @@ public class DataReader {
         try {
             number = sc.nextInt();
         } catch (InputMismatchException e) {
-            throw new NumberFormatException("Liczba wprowadzona w niepoprawnej formie");
+            throw new NumberFormatException("Number entered in incorrect form");
         } finally {
             sc.nextLine();
         }
@@ -32,21 +32,21 @@ public class DataReader {
     }
 	
 	public Book readAndCreateBook() throws InputMismatchException {
-        System.out.println("Tytuł: ");
+        System.out.println("Title: ");
         String title = sc.nextLine();
-        System.out.println("Autor: ");
+        System.out.println("Author: ");
         String author = sc.nextLine();
-        System.out.println("Wydawnictwo: ");
+        System.out.println("Publishing house: ");
         String publisher = sc.nextLine();
         System.out.println("ISBN: ");
         String isbn = sc.nextLine();
-        System.out.println("Rok wydania: ");
+        System.out.println("Publication date: ");
         int releaseDate = 0;
         int pages = 0;
         try {
             releaseDate = sc.nextInt();
             sc.nextLine();
-            System.out.println("Ilość stron: ");
+            System.out.println("Number of pages: ");
             pages = sc.nextInt();
             sc.nextLine();
         } catch (InputMismatchException e) {
@@ -58,23 +58,23 @@ public class DataReader {
     }
 	
 	public Magazine readAndCreateMagazine() throws InputMismatchException {
-        System.out.println("Tytuł: ");
+        System.out.println("Title: ");
         String title = sc.nextLine();
-        System.out.println("Wydawnictwo: ");
+        System.out.println("Publishing house: ");
         String publisher = sc.nextLine();
-        System.out.println("Język: ");
+        System.out.println("Language: ");
         String language = sc.nextLine();
-        System.out.println("Rok wydania: ");
+        System.out.println("Publication date: ");
         int year = 0;
         int month = 0;
         int day = 0;
         try {
             year = sc.nextInt();
             sc.nextLine();
-            System.out.println("Miesiąc: ");
+            System.out.println("Month: ");
             month = sc.nextInt();
             sc.nextLine();
-            System.out.println("Dzień: ");
+            System.out.println("Day: ");
             day = sc.nextInt();
             sc.nextLine();
         } catch (InputMismatchException e) {
@@ -86,9 +86,9 @@ public class DataReader {
     }
 	
 	public LibraryUser readAndCreateLibraryUser() {
-        System.out.println("Imię: ");
+        System.out.println("First Name: ");
         String firstName = sc.nextLine();
-        System.out.println("Nazwisko: ");
+        System.out.println("Last Name: ");
         String lastName = sc.nextLine();
         System.out.println("PESEL: ");
         String pesel = sc.nextLine();
