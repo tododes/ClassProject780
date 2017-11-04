@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Library implements Serializable {
-	private static final long serialVersionUID = 7346680215932771853L;
-	private Map<String, Publication> publications;
-	private Map<String, LibraryUser> users;
+
+	private final Map<String, Publication> publications;
+	private final Map<String, LibraryUser> users;
 	
 	public int getPublicationsNumber(){
 		return publications.size();
@@ -39,16 +39,17 @@ public class Library implements Serializable {
 		users.put(user.getSocialSecurityNumber(), user);
 	}
 	
-	public void removePublication(Publication pub) {
-        if(publications.containsValue(pub)){
+	public void removePublication(Publication publication) {
+        if(publications.containsValue(publication)){
         	publications.remove(pub.getTitle());
         }
     }
 	
-	private void addPublication(Publication pub) {
-        publications.put(pub.getTitle(), pub);
+	private void addPublication(Publication publication) {
+        publications.put(publication.getTitle(), publication);
     }
 	
+	@override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
         for(Publication p: publications.values()) {
