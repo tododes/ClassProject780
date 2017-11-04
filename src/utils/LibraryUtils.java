@@ -8,16 +8,16 @@ import data.Periodical;
 
 public class LibraryUtils {
 
-	public static void printBooks(Library lib) {
-		printPublications(lib, Book.class);
+	public static void printBooks(Library libary) {
+		printPublications(library, Book.class);
     }
      
-    public static void printPeriodicals(Library lib) {
-    	printPublications(lib, Periodical.class);
+    public static void printPeriodicals(Library library) {
+    	printPublications(library, Periodical.class);
     }
     
-    private static void printPublications(Library lib, Class<?> cl) {
-    	long countPublications = lib.getPublications().values().stream()
+    private static void printPublications(Library library, Class<?> cl) {
+    	long countPublications = library.getPublications().values().stream()
     			.filter(cl::isInstance).sorted(new Library.AlphabeticalComparator())
     			.peek(System.out::println).count();
     	if(countPublications == 0) {
@@ -25,8 +25,8 @@ public class LibraryUtils {
     	}
     }
     
-    public static void printUsers(Library lib) {
-    	lib.getUsers().values().stream()
+    public static void printUsers(Library library) {
+    	library.getUsers().values().stream()
     				.sorted((a,b) -> a.getLastName().compareTo(b.getLastName()))
     				.forEach(System.out::println);
     }
