@@ -28,11 +28,11 @@ public class Library implements Serializable {
 	}
 	
 	public void addBook(Book book){
-		addPublication(book);
+		publications.put(book.getTitle(), book);
 	}
 	
 	public void addPeriodical(Periodical periodical) {
-        addPublication(periodical);
+		publications.put(periodical.getTitle(), periodical);
     }
 	
 	public void addUser(LibraryUser user) {
@@ -43,10 +43,6 @@ public class Library implements Serializable {
         if(publications.containsValue(pub)){
         	publications.remove(pub.getTitle());
         }
-    }
-	
-	private void addPublication(Publication pub) {
-        publications.put(pub.getTitle(), pub);
     }
 	
 	public String toString(){
