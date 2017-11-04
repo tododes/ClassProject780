@@ -44,7 +44,7 @@ public class DataReader {
         int releaseDate = 0;
         int pages = 0;
         try {
-            releaseDate = sc.nextInt();
+            releaseDate = scanner.nextInt();
             scanner.nextLine();
             System.out.println("Number of pages: ");
             pages = scanner.nextInt();
