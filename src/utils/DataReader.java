@@ -90,9 +90,9 @@ public class DataReader {
         String firstName = sc.nextLine();
         System.out.println("Last Name: ");
         String lastName = sc.nextLine();
-        System.out.println("PESEL: ");
-        String pesel = sc.nextLine();
+        System.out.println("Social Security Number, ######### format: ");
+        String socialSecurityNumber = sc.nextLine();
   
-        return new LibraryUser(firstName, lastName, pesel);
+        return new LibraryUser(firstName, lastName, socialSecurityNumber);
     }
 }
