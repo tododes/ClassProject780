@@ -33,7 +33,7 @@ public class LibraryControl {
         }
     }
 
-    public LibraryControl getInstance(){
+    public static LibraryControl getInstance(){
     	if(instance == null)
     		instance = new LibraryControl();
     	return instance;
