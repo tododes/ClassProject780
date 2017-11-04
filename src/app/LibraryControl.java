@@ -24,13 +24,8 @@ public class LibraryControl {
 	private LibraryControl() {
         dataReader = new DataReader();
         fileManager = new FileManager();
-        try {
-            library = fileManager.readLibraryFromFile();
-            System.out.println("Data loaded from the file ");
-        } catch (ClassNotFoundException | IOException e) {
-            library = new Library();
-            System.out.println("New library database created.");
-        }
+        library = Library.getInstanceFromSaveFile();
+		System.out.println("Data loaded from the file ");
     }
 
     public static LibraryControl getInstance(){

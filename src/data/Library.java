@@ -1,14 +1,49 @@
 package data;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
+import utils.DataReader;
+import utils.FileManager;
+
 public class Library implements Serializable {
 	private static final long serialVersionUID = 7346680215932771853L;
 	private Map<String, Publication> publications;
 	private Map<String, LibraryUser> users;
+	
+	private static Library instance;
+	private static FileManager fileManager;
+	
+	private Library() {
+		publications = new HashMap<>();
+		users = new HashMap<>();
+		fileManager = new FileManager();
+	}
+	
+	public static Library getInstance(){
+		if(instance == null)
+			instance = new Library();
+		return instance;
+	}
+	
+	public static Library getInstanceFromSaveFile(){
+		if(instance == null){
+			try {
+				instance = fileManager.readLibraryFromFile();
+			} catch (FileNotFoundException e) {
+				instance = getInstance();
+			} catch (ClassNotFoundException e) {
+				instance = getInstance();
+			} catch (IOException e) {
+				instance = getInstance();
+			}
+		}
+		return instance;
+	}
 	
 	public int getPublicationsNumber(){
 		return publications.size();
@@ -20,11 +55,6 @@ public class Library implements Serializable {
 	
 	public Map<String, LibraryUser> getUsers(){
 		return users;
-	}
-	
-	public Library() {
-		publications = new HashMap<>();
-		users = new HashMap<>();
 	}
 	
 	public void addBook(Book book){
