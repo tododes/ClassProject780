@@ -14,15 +14,15 @@ public class FileManager {
     
     public void writeLibraryToFile(Library lib) {
         try(
-        FileOutputStream fos = new FileOutputStream(FILE_NAME);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        FileOutputStream fileOutput = new FileOutputStream(FILE_NAME);
+        ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
                 ) {
              
-            oos.writeObject(lib);
+            objectOutput.writeObject(lib);
              
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException exception) {
             System.err.println("File not found " + FILE_NAME);
-        } catch (IOException e) {
+        } catch (IOException exception) {
             System.err.println("Error writing to file " + FILE_NAME);
         }
     }
@@ -30,21 +30,23 @@ public class FileManager {
     public Library readLibraryFromFile() throws FileNotFoundException, IOException, ClassNotFoundException {
         Library library = null;
         try(
-        FileInputStream fis = new FileInputStream(FILE_NAME);
-        ObjectInputStream ois = new ObjectInputStream(fis);
+        FileInputStream fileInput = new FileInputStream(FILE_NAME);
+        ObjectInputStream objectInput = new ObjectInputStream(fileInput);
                 ) {
              
-            library = (Library)ois.readObject();
+            library = (Library)objectInput.readObject();
              
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException exception) {
             System.err.println("File not found " + FILE_NAME);
-            throw e;
-        } catch (IOException e) {
+            throw exception;
+        } 
+	    catch (IOException exception) {
             System.err.println("Error writing to file " + FILE_NAME);
-            throw e;
-        } catch (ClassNotFoundException e) {
+            throw exception;
+        } 
+	    catch (ClassNotFoundException exception) {
             System.err.println("Invalid file format");
-            throw e;
+            throw exception;
         }
          
         return library;
