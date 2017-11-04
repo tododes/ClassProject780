@@ -63,8 +63,8 @@ public class LibraryControl {
                 case EXIT:
                     exit();
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Incorrect data entered, no publication added.");
+            } catch (InputMismatchException exception) {
+                System.out.println("Incorrect data entered, no publication added."+exception);
             } catch (NumberFormatException | NoSuchElementException e) {
                 System.out.println("The selected option does not exist, select again:");
             }
