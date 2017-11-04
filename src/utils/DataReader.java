@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import data.Book;
 import data.LibraryUser;
-import data.Magazine;
+import data.Periodical;
 
 public class DataReader {
 
@@ -57,7 +57,7 @@ public class DataReader {
         return new Book(title, author, releaseDate, pages, publisher, isbn);
     }
 	
-	public Magazine readAndCreateMagazine() throws InputMismatchException {
+	public Periodical readAndCreatePeriodical() throws InputMismatchException {
         System.out.println("Title: ");
         String title = sc.nextLine();
         System.out.println("Publishing house: ");
@@ -82,7 +82,7 @@ public class DataReader {
             throw e;
         }
  
-        return new Magazine(title, publisher, language, year, month, day);
+        return new Periodical(title, publisher, language, year, month, day);
     }
 	
 	public LibraryUser readAndCreateLibraryUser() {
