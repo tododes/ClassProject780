@@ -31,8 +31,8 @@ public class Library implements Serializable {
 		addPublication(book);
 	}
 	
-	public void addMagazine(Magazine magazine) {
-        addPublication(magazine);
+	public void addPeriodical(Periodical periodical) {
+        addPublication(periodical);
     }
 	
 	public void addUser(LibraryUser user) {

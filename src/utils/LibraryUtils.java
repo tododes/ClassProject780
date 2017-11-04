@@ -4,7 +4,7 @@ package utils;
 
 import data.Book;
 import data.Library;
-import data.Magazine;
+import data.Periodical;
 
 public class LibraryUtils {
 
@@ -12,8 +12,8 @@ public class LibraryUtils {
 		printPublications(lib, Book.class);
     }
      
-    public static void printMagazines(Library lib) {
-    	printPublications(lib, Magazine.class);
+    public static void printPeriodicals(Library lib) {
+    	printPublications(lib, Periodical.class);
     }
     
     private static void printPublications(Library lib, Class<?> cl) {

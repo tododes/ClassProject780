@@ -2,7 +2,7 @@ package data;
 
 import java.time.LocalDate;
 
-public class Magazine extends Publication {
+public class Periodical extends Publication {
 	private static final long serialVersionUID = 2061400934707882805L;
 	
 	private String language;
@@ -23,7 +23,7 @@ public class Magazine extends Publication {
 		this.language = language;
 	}
 	
-	public Magazine(String title, String publisher, String language, int year, int month, int day){
+	public Periodical(String title, String publisher, String language, int year, int month, int day){
 		super(year, title, publisher);
 		setLanguage(language);
         setDate(LocalDate.of(year, month, day));
@@ -62,7 +62,7 @@ public class Magazine extends Publication {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Magazine other = (Magazine) obj;
+		Periodical other = (Periodical) obj;
 		if (language == null) {
 			if (other.language != null)
 				return false;
