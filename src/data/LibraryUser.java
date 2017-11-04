@@ -16,8 +16,8 @@ public class LibraryUser extends User {
         return borrowedPublications;
     }
  
-    public LibraryUser(String firstName, String lastName, String pesel) {
-        super(firstName, lastName, pesel);
+    public LibraryUser(String firstName, String lastName, String socialSecurityNumber) {
+        super(firstName, lastName, socialSecurityNumber);
         publicationHistory = new ArrayList<>();
         borrowedPublications = new ArrayList<>();
     }
