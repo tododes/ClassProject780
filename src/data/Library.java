@@ -36,7 +36,7 @@ public class Library implements Serializable {
     }
 	
 	public void addUser(LibraryUser user) {
-		users.put(user.getPesel(), user);
+		users.put(user.getSocialSecurityNumber(), user);
 	}
 	
 	public void removePublication(Publication pub) {
