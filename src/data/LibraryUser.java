@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryUser extends User {
-	private static final long serialVersionUID = -8947711557376301730L;
-	private List<Publication> publicationHistory;
-    private List<Publication> borrowedPublications;
+	private final List<Publication> publicationHistory;
+    private final List<Publication> borrowedPublications;
      
     public List<Publication> getPublicationHistory() {
         return publicationHistory;
@@ -22,19 +21,19 @@ public class LibraryUser extends User {
         borrowedPublications = new ArrayList<>();
     }
  
-    private void addPublicationToHistory(Publication pub) {
-        publicationHistory.add(pub);
+    private void addPublicationToHistory(Publication publication) {
+        publicationHistory.add(publication);
     }
      
-    public void borrowPublication(Publication pub) {
-        borrowedPublications.add(pub);
+    public void borrowPublication(Publication publication) {
+        borrowedPublications.add(publication);
     }
      
-    public boolean returnPublication(Publication pub) {
+    public boolean returnPublication(Publication publication) {
         boolean result = false;
-        if(borrowedPublications.remove(pub)) {
+        if(borrowedPublications.remove(publication)) {
             result = true;
-            addPublicationToHistory(pub);
+            addPublicationToHistory(publication);
         }
         return result;
     }
