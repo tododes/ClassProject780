@@ -7,17 +7,16 @@ import java.util.NoSuchElementException;
 import data.Book;
 import data.Library;
 import data.LibraryUser;
-import data.Magazine;
+import data.Periodical;
 import utils.DataReader;
 import utils.FileManager;
 import utils.LibraryUtils;
 
 public class LibraryControl {
-	//variable for communication with the user
+
 	private DataReader dataReader;
 	private FileManager fileManager;
 	
-	//"library" that stores data
 	private Library library;
 	
 	public LibraryControl() {
@@ -31,10 +30,6 @@ public class LibraryControl {
             System.out.println("New library database created.");
         }
     }
-	
-	/*
-     * Main loop program that allows you to select options and interact
-     */
     public void controlLoop() {
         Option option = null;
         while (option != Option.EXIT) {
@@ -45,14 +40,14 @@ public class LibraryControl {
                 case ADD_BOOK:
                     addBook();
                     break;
-                case ADD_MAGAZINE:
-                    addMagazine();
+                case ADD_PERIODICAL:
+                    addPeriodical();
                     break;
                 case PRINT_BOOKS:
                     printBooks();
                     break;
-                case PRINT_MAGAZINES:
-                    printMagazines();
+                case PRINT_PERIODICALS:
+                    printPeriodicals();
                     break;
                 case ADD_USER:
                     addUser();
@@ -63,13 +58,13 @@ public class LibraryControl {
                 case EXIT:
                     exit();
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Incorrect data entered, no publication added.");
+            } catch (InputMismatchException exception) {
+                System.out.println("Incorrect data entered, no publication added."+exception);
             } catch (NumberFormatException | NoSuchElementException e) {
                 System.out.println("The selected option does not exist, select again:");
             }
         }
-        // we close the input stream
+
         dataReader.close();
     }
 	
@@ -89,13 +84,13 @@ public class LibraryControl {
         LibraryUtils.printBooks(library);
     }
   
-    private void addMagazine() {
-        Magazine magazine = dataReader.readAndCreateMagazine();
-        library.addMagazine(magazine);
+    private void addPeriodical() {
+        Periodical magazine = dataReader.readAndCreatePeriodical();
+        library.addPeriodical(magazine);
     }
   
-    private void printMagazines() {
-        LibraryUtils.printMagazines(library);
+    private void printPeriodicals() {
+        LibraryUtils.printPeriodicals(library);
     }
     
     private void addUser() {
@@ -114,31 +109,31 @@ public class LibraryControl {
     private enum Option {
       	EXIT(0, "Exit program"),
         ADD_BOOK(1, "Add a book"),
-        ADD_MAGAZINE(2,"Adding a magazine / newspaper"),
+        ADD_PERIODICAL(2,"Adding a magazine / newspaper"),
         PRINT_BOOKS(3, "View available books"),
-        PRINT_MAGAZINES(4, "Display of available magazines / newspapers"),
+        PRINT_PERIODICALS(4, "Display of available magazines / newspapers"),
         ADD_USER(5, "Add a new user"),
         PRINT_USERS(6, "Display the list of users");
       
         private int value;
-        private String description;
+        private String descriptionPeriodical;
       
-        Option(int value, String desc) {
+        Option(int value, String description) {
             this.value = value;
-            this.description = desc;
+            this.descriptionPeriodical = description;
         }
           
         @Override
         public String toString() {
-            return value + " - " + description;
+            return value + " - " + descriptionPeriodical;
         }
           
         public static Option createFromInt(int option) throws NoSuchElementException {
             Option result = null;
             try {
                 result = Option.values()[option];
-            } catch(ArrayIndexOutOfBoundsException e) {
-                throw new NoSuchElementException("No element specified ID");
+            } catch(ArrayIndexOutOfBoundsException exception) {
+                throw new NoSuchElementException("No element specified ID"+exception);
             }
               
             return result;
