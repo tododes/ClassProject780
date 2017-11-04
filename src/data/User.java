@@ -6,7 +6,7 @@ public abstract class User implements Serializable {
 	private static final long serialVersionUID = -9138089616151565144L;
 	private String firstName;
 	private String lastName;
-	private String pesel;
+	private String socialSecurityNumber;
 	
 	public String getFirstName() {
 		return firstName;
@@ -20,17 +20,17 @@ public abstract class User implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getPesel() {
-		return pesel;
+	public String getSocialSecurityNumber() {
+		return socialSecurityNumber;
 	}
-	public void setPesel(String pesel) {
-		this.pesel = pesel;
+	public void setSocialSecurityNumber(String socialSecurityNumber) {
+		this.socialSecurityNumber = socialSecurityNumber;
 	}
-	public User(String firstName, String lastName, String pesel) {
+	public User(String firstName, String lastName, String socialSecurityNumber) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.pesel = pesel;
+		this.socialSecurityNumber = socialSecurityNumber;
 	}
 	
 	@Override
@@ -39,7 +39,7 @@ public abstract class User implements Serializable {
 		int result = 1;
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((pesel == null) ? 0 : pesel.hashCode());
+		result = prime * result + ((socialSecurityNumber == null) ? 0 : socialSecurityNumber.hashCode());
 		return result;
 	}
 	
@@ -62,16 +62,16 @@ public abstract class User implements Serializable {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (pesel == null) {
-			if (other.pesel != null)
+		if (socialSecurityNumber == null) {
+			if (other.socialSecurityNumber != null)
 				return false;
-		} else if (!pesel.equals(other.pesel))
+		} else if (!socialSecurityNumber.equals(other.socialSecurityNumber))
 			return false;
 		return true;
 	}
 	
 	public String toString(){
-		return firstName + " " + lastName + " - " + pesel;
+		return firstName + " " + lastName + " - " + socialSecurityNumber;
 	}
 	
 }
