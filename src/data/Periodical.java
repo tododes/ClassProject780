@@ -25,8 +25,8 @@ public class Periodical extends Publication {
 	
 	public Periodical(String title, String publisher, String language, int year, int month, int day){
 		super(year, title, publisher);
-		setLanguage(language);
-        setDate(LocalDate.of(year, month, day));
+		this.language = language;
+        	setDate(LocalDate.of(year, month, day));
 	}
 	
 	@Override
