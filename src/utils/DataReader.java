@@ -40,7 +40,7 @@ public class DataReader {
         String publisher = sc.nextLine();
         System.out.println("ISBN: ");
         String isbn = sc.nextLine();
-        System.out.println("Publication date: ");
+        System.out.println("Publication year: ");
         int releaseDate = 0;
         int pages = 0;
         try {
@@ -64,17 +64,17 @@ public class DataReader {
         String publisher = sc.nextLine();
         System.out.println("Language: ");
         String language = sc.nextLine();
-        System.out.println("Publication date: ");
+        System.out.println("Publication year: ");
         int year = 0;
         int month = 0;
         int day = 0;
         try {
             year = sc.nextInt();
             sc.nextLine();
-            System.out.println("Month: ");
+            System.out.println("Publication Month: ");
             month = sc.nextInt();
             sc.nextLine();
-            System.out.println("Day: ");
+            System.out.println("Publication Day: ");
             day = sc.nextInt();
             sc.nextLine();
         } catch (InputMismatchException e) {
