@@ -9,49 +9,49 @@ import data.Periodical;
 
 public class DataReader {
 
-	private Scanner sc;	
+	private Scanner scanner;	
 	
 	public DataReader(){
-		sc = new Scanner(System.in);
+		scanner = new Scanner(System.in);
 	}
 	
 	public void close(){
-		sc.close();
+		scanner.close();
 	}
 	
 	public int getInt() throws NumberFormatException {
         int number = 0;
         try {
-            number = sc.nextInt();
-        } catch (InputMismatchException e) {
-            throw new NumberFormatException("Number entered in incorrect form");
+            number = scanner.nextInt();
+        } catch (InputMismatchException exception) {
+            throw new NumberFormatException("Number entered in incorrect form"+exception);
         } finally {
-            sc.nextLine();
+            scanner.nextLine();
         }
         return number;
     }
 	
 	public Book readAndCreateBook() throws InputMismatchException {
         System.out.println("Title: ");
-        String title = sc.nextLine();
+        String title = scanner.nextLine();
         System.out.println("Author: ");
-        String author = sc.nextLine();
+        String author = scanner.nextLine();
         System.out.println("Publishing house: ");
-        String publisher = sc.nextLine();
+        String publisher = scanner.nextLine();
         System.out.println("ISBN: ");
-        String isbn = sc.nextLine();
+        String isbn = scanner.nextLine();
         System.out.println("Publication year: ");
         int releaseDate = 0;
         int pages = 0;
         try {
             releaseDate = sc.nextInt();
-            sc.nextLine();
+            scanner.nextLine();
             System.out.println("Number of pages: ");
-            pages = sc.nextInt();
-            sc.nextLine();
-        } catch (InputMismatchException e) {
-            sc.nextLine();
-            throw e;
+            pages = scanner.nextInt();
+            scanner.nextLine();
+        } catch (InputMismatchException exception) {
+            scanner.nextLine();
+            throw exception;
         }
  
         return new Book(title, author, releaseDate, pages, publisher, isbn);
@@ -59,27 +59,27 @@ public class DataReader {
 	
 	public Periodical readAndCreatePeriodical() throws InputMismatchException {
         System.out.println("Title: ");
-        String title = sc.nextLine();
+        String title = scanner.nextLine();
         System.out.println("Publishing house: ");
-        String publisher = sc.nextLine();
+        String publisher = scanner.nextLine();
         System.out.println("Language: ");
-        String language = sc.nextLine();
+        String language = scanner.nextLine();
         System.out.println("Publication year: ");
         int year = 0;
         int month = 0;
         int day = 0;
         try {
-            year = sc.nextInt();
-            sc.nextLine();
+            year = scanner.nextInt();
+            scanner.nextLine();
             System.out.println("Publication Month: ");
-            month = sc.nextInt();
-            sc.nextLine();
+            month = scanner.nextInt();
+            scanner.nextLine();
             System.out.println("Publication Day: ");
-            day = sc.nextInt();
-            sc.nextLine();
-        } catch (InputMismatchException e) {
-            sc.nextLine();
-            throw e;
+            day = scanner.nextInt();
+            scanner.nextLine();
+        } catch (InputMismatchException exception) {
+            scanner.nextLine();
+            throw exception;
         }
  
         return new Periodical(title, publisher, language, year, month, day);
@@ -87,11 +87,11 @@ public class DataReader {
 	
 	public LibraryUser readAndCreateLibraryUser() {
         System.out.println("First Name: ");
-        String firstName = sc.nextLine();
+        String firstName = scanner.nextLine();
         System.out.println("Last Name: ");
-        String lastName = sc.nextLine();
+        String lastName = scanner.nextLine();
         System.out.println("Social Security Number, ######### format: ");
-        String socialSecurityNumber = sc.nextLine();
+        String socialSecurityNumber = scanner.nextLine();
   
         return new LibraryUser(firstName, lastName, socialSecurityNumber);
     }
