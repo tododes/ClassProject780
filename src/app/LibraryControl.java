@@ -13,11 +13,10 @@ import utils.FileManager;
 import utils.LibraryUtils;
 
 public class LibraryControl {
-	//variable for communication with the user
+
 	private DataReader dataReader;
 	private FileManager fileManager;
 	
-	//"library" that stores data
 	private Library library;
 	
 	public LibraryControl() {
@@ -31,10 +30,6 @@ public class LibraryControl {
             System.out.println("New library database created.");
         }
     }
-	
-	/*
-     * Main loop program that allows you to select options and interact
-     */
     public void controlLoop() {
         Option option = null;
         while (option != Option.EXIT) {
@@ -69,7 +64,7 @@ public class LibraryControl {
                 System.out.println("The selected option does not exist, select again:");
             }
         }
-        // we close the input stream
+
         dataReader.close();
     }
 	
@@ -121,24 +116,24 @@ public class LibraryControl {
         PRINT_USERS(6, "Display the list of users");
       
         private int value;
-        private String description;
+        private String description_magazine;
       
-        Option(int value, String desc) {
+        Option(int value, String description) {
             this.value = value;
-            this.description = desc;
+            this.description_magazine = description;
         }
           
         @Override
         public String toString() {
-            return value + " - " + description;
+            return value + " - " + description_magazine;
         }
           
         public static Option createFromInt(int option) throws NoSuchElementException {
             Option result = null;
             try {
                 result = Option.values()[option];
-            } catch(ArrayIndexOutOfBoundsException e) {
-                throw new NoSuchElementException("No element specified ID");
+            } catch(ArrayIndexOutOfBoundsException exception) {
+                throw new NoSuchElementException("No element specified ID"+exception);
             }
               
             return result;
