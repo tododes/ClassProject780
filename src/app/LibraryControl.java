@@ -126,6 +126,7 @@ public class LibraryControl {
         @Override
         public String toString() {
             return value + " - " + descriptionPeriodical;
+
         }
           
         public static Option createFromInt(int option) throws NoSuchElementException {
