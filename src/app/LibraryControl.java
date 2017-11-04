@@ -85,8 +85,8 @@ public class LibraryControl {
     }
   
     private void addPeriodical() {
-        Periodical magazine = dataReader.readAndCreatePeriodical();
-        library.addPeriodical(magazine);
+        Periodical periodical = dataReader.readAndCreatePeriodical();
+        library.addPeriodical(periodical);
     }
   
     private void printPeriodicals() {
