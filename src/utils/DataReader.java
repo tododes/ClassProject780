@@ -3,15 +3,16 @@ package utils;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import data.Book;
 import data.LibraryUser;
-import data.Periodical;
 import data.PublicationParameters;
+import data.PublicationFactory;
+import data.Publication;
 
 public class DataReader {
 
 	private Scanner scanner;
 	PublicationParameters parameters = new PublicationParameters();
+        PublicationFactory factory = new PublicationFactory();
         
 	public DataReader(){
 		scanner = new Scanner(System.in);
@@ -33,7 +34,7 @@ public class DataReader {
             return number;
         }
 	
-	public Book readAndCreateBook() throws InputMismatchException {
+	public Publication readBook() throws InputMismatchException {
             System.out.println("Title: ");
             parameters.title = scanner.nextLine();
             System.out.println("Author: ");
@@ -54,10 +55,10 @@ public class DataReader {
                 throw exception;
             }
  
-            return new Book(parameters);
+            return factory.getPublication("Book",parameters);
         }
 	
-	public Periodical readAndCreatePeriodical() throws InputMismatchException {
+	public Publication readPeriodical() throws InputMismatchException {
 
         System.out.println("Title: ");
         parameters.title = scanner.nextLine();
@@ -83,7 +84,7 @@ public class DataReader {
             throw exception;
         }
  
-        return new Periodical(parameters);
+        return factory.getPublication("Periodical",parameters);
     }
 	
 	public LibraryUser readAndCreateLibraryUser() {
