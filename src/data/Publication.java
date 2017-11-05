@@ -38,7 +38,7 @@ public abstract class Publication implements Serializable, Comparable<Publicatio
 		this.title = parameters.title;
 		this.publisher = parameters.publisher;
 	}
-	
+// TO-DO :: Is there a way to make this hascode and equals method common for other class and based on input it obtains??	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
