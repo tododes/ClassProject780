@@ -30,11 +30,11 @@ public class Book extends Publication {
 		this.isbn = isbn;
 	}
 
-	public Book(String title, String author, int year, int pages, String publisher, String isbn) {
-		super(year, title, publisher);
-		this.author = author;
-		this.pages = pages;
-		this.isbn = isbn;
+	public Book(PublicationParameters parameters) {
+		super(parameters);
+		this.author = parameters.author;
+		this.pages = parameters.pages;
+		this.isbn = parameters.isbn;
 	}
 
 	@Override

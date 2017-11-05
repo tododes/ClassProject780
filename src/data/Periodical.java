@@ -23,10 +23,10 @@ public class Periodical extends Publication {
 		this.language = language;
 	}
 	
-	public Periodical(String title, String publisher, String language, int year, int month, int day){
-		super(year, title, publisher);
-		this.language = language;
-        	setDate(LocalDate.of(year, month, day));
+	public Periodical(PublicationParameters parameters){
+		super(parameters);
+		this.language = parameters.language;
+        	setDate(LocalDate.of(parameters.year, parameters.month, parameters.day));
 	}
 	
 	@Override
