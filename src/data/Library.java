@@ -59,13 +59,10 @@ public class Library implements Serializable {
 		return users;
 	}
 	
-	public void addBook(Book book){
-		publications.put(book.getTitle(), book);
+	public void addPublication(Publication publication){
+		publications.put(publication.getTitle(), publication);
 	}
 	
-	public void addPeriodical(Periodical periodical) {
-		publications.put(periodical.getTitle(), periodical);
-    }
 	
 	public void addUser(LibraryUser user) {
 		users.put(user.getSocialSecurityNumber(), user);
@@ -77,6 +74,7 @@ public class Library implements Serializable {
         }
     }
 	
+        @Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
         for(Publication p: publications.values()) {

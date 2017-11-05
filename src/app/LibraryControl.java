@@ -8,6 +8,7 @@ import data.Book;
 import data.Library;
 import data.LibraryUser;
 import data.Periodical;
+import data.Publication;
 import utils.DataReader;
 import utils.FileManager;
 import utils.LibraryUtils;
@@ -80,8 +81,7 @@ public class LibraryControl {
     }
   
     private void addBook() {
-        Book book = dataReader.readAndCreateBook();
-        library.addBook(book);
+        library.addPublication(dataReader.readBook());
     }
   
     private void printBooks() {
@@ -89,8 +89,7 @@ public class LibraryControl {
     }
   
     private void addPeriodical() {
-        Periodical periodical = dataReader.readAndCreatePeriodical();
-        library.addPeriodical(periodical);
+        library.addPublication(dataReader.readPeriodical());
     }
   
     private void printPeriodicals() {
