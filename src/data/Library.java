@@ -32,6 +32,8 @@ public class Library implements Serializable {
 	
 	public static Library getInstanceFromSaveFile(){
 		if(instance == null){
+			if(fileManager == null)
+				fileManager = new FileManager();
 			try {
 				instance = fileManager.readLibraryFromFile();
 			} catch (FileNotFoundException e) {
