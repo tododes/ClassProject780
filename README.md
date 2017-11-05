@@ -7,5 +7,6 @@ We did not create the original code, it came from another github repository at t
 https://github.com/adrianDyj/Library
 
 The group members are:
-
 Michelle Thomas
+Nimisha Niyogi
+Todo Sidabalok

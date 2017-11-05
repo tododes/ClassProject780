@@ -14,22 +14,26 @@ import utils.LibraryUtils;
 
 public class LibraryControl {
 
+	private static LibraryControl instance;
+
 	private DataReader dataReader;
 	private FileManager fileManager;
 	
 	private Library library;
 	
-	public LibraryControl() {
+	private LibraryControl() {
         dataReader = new DataReader();
         fileManager = new FileManager();
-        try {
-            library = fileManager.readLibraryFromFile();
-            System.out.println("Data loaded from the file ");
-        } catch (ClassNotFoundException | IOException e) {
-            library = new Library();
-            System.out.println("New library database created.");
-        }
+        library = Library.getInstanceFromSaveFile();
+		System.out.println("Data loaded from the file ");
     }
+
+    public static LibraryControl getInstance(){
+    	if(instance == null)
+    		instance = new LibraryControl();
+    	return instance;
+    }
+
     public void controlLoop() {
         Option option = null;
         while (option != Option.EXIT) {

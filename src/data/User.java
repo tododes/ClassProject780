@@ -3,7 +3,7 @@ package data;
 import java.io.Serializable;
 
 public abstract class User implements Serializable {
-	private static final long serialVersionUID = -9138089616151565144L;
+	
 	private String firstName;
 	private String lastName;
 	private String socialSecurityNumber;
@@ -69,7 +69,7 @@ public abstract class User implements Serializable {
 			return false;
 		return true;
 	}
-	
+	@Override
 	public String toString(){
 		return firstName + " " + lastName + " - " + socialSecurityNumber;
 	}
