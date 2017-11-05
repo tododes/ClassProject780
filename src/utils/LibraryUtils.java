@@ -8,7 +8,7 @@ import data.Periodical;
 
 public class LibraryUtils {
 
-	public static void printBooks(Library libary) {
+	public static void printBooks(Library library) {
 		printPublications(library, Book.class);
     }
      
