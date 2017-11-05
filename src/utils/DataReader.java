@@ -6,11 +6,13 @@ import java.util.Scanner;
 import data.Book;
 import data.LibraryUser;
 import data.Periodical;
+import data.PublicationParameters;
 
 public class DataReader {
 
-	private Scanner scanner;	
-	
+	private Scanner scanner;
+	PublicationParameters parameters = new PublicationParameters();
+        
 	public DataReader(){
 		scanner = new Scanner(System.in);
 	}
@@ -20,69 +22,68 @@ public class DataReader {
 	}
 	
 	public int getInt() throws NumberFormatException {
-        int number = 0;
-        try {
-            number = scanner.nextInt();
-        } catch (InputMismatchException exception) {
-            throw new NumberFormatException("Number entered in incorrect form"+exception);
-        } finally {
-            scanner.nextLine();
+            int number = 0;
+            try {
+                number = scanner.nextInt();
+            } catch (InputMismatchException exception) {
+                throw new NumberFormatException("Number entered in incorrect form"+exception);
+            } finally {
+                scanner.nextLine();
+            }
+            return number;
         }
-        return number;
-    }
 	
 	public Book readAndCreateBook() throws InputMismatchException {
-        System.out.println("Title: ");
-        String title = scanner.nextLine();
-        System.out.println("Author: ");
-        String author = scanner.nextLine();
-        System.out.println("Publishing house: ");
-        String publisher = scanner.nextLine();
-        System.out.println("ISBN: ");
-        String isbn = scanner.nextLine();
-        System.out.println("Publication year: ");
-        int releaseDate = 0;
-        int pages = 0;
-        try {
-            releaseDate = scanner.nextInt();
-            scanner.nextLine();
-            System.out.println("Number of pages: ");
-            pages = scanner.nextInt();
-            scanner.nextLine();
-        } catch (InputMismatchException exception) {
-            scanner.nextLine();
-            throw exception;
-        }
+            System.out.println("Title: ");
+            parameters.title = scanner.nextLine();
+            System.out.println("Author: ");
+            parameters.author = scanner.nextLine();
+            System.out.println("Publishing house: ");
+            parameters.publisher = scanner.nextLine();
+            System.out.println("ISBN: ");
+            parameters.isbn = scanner.nextLine();
+            System.out.println("Publication year: ");
+            try {
+                parameters.year = scanner.nextInt();
+                scanner.nextLine();
+                System.out.println("Number of pages: ");
+                parameters.pages = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException exception) {
+                scanner.nextLine();
+                throw exception;
+            }
  
-        return new Book(title, author, releaseDate, pages, publisher, isbn);
-    }
+            return new Book(parameters);
+        }
 	
 	public Periodical readAndCreatePeriodical() throws InputMismatchException {
+
         System.out.println("Title: ");
-        String title = scanner.nextLine();
+        parameters.title = scanner.nextLine();
         System.out.println("Publishing house: ");
-        String publisher = scanner.nextLine();
+        parameters.publisher = scanner.nextLine();
         System.out.println("Language: ");
-        String language = scanner.nextLine();
+        parameters.language = scanner.nextLine();
         System.out.println("Publication year: ");
-        int year = 0;
-        int month = 0;
-        int day = 0;
+        parameters.year = 0;
+        parameters.month = 0;
+        parameters.day = 0;
         try {
-            year = scanner.nextInt();
+            parameters.year = scanner.nextInt();
             scanner.nextLine();
             System.out.println("Publication Month: ");
-            month = scanner.nextInt();
+            parameters.month = scanner.nextInt();
             scanner.nextLine();
             System.out.println("Publication Day: ");
-            day = scanner.nextInt();
+            parameters.day = scanner.nextInt();
             scanner.nextLine();
         } catch (InputMismatchException exception) {
             scanner.nextLine();
             throw exception;
         }
  
-        return new Periodical(title, publisher, language, year, month, day);
+        return new Periodical(parameters);
     }
 	
 	public LibraryUser readAndCreateLibraryUser() {
