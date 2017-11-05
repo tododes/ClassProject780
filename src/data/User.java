@@ -69,7 +69,7 @@ public abstract class User implements Serializable {
 			return false;
 		return true;
 	}
-	@override
+	@Override
 	public String toString(){
 		return firstName + " " + lastName + " - " + socialSecurityNumber;
 	}
