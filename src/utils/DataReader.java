@@ -1,8 +1,10 @@
 package utils;
 
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import app.GetOptions.Option;
 import data.LibraryUser;
 import data.PublicationParameters;
 import data.PublicationFactory;
@@ -97,4 +99,14 @@ public class DataReader {
   
         return new LibraryUser(firstName, lastName, socialSecurityNumber);
     }
+	
+	   public Option createOption() throws NoSuchElementException{
+	    	  Option result = null;
+	          try {
+	              result = Option.values()[getInt()];
+	          } catch(ArrayIndexOutOfBoundsException exception) {
+	              throw new NoSuchElementException("No element specified ID"+exception);
+	          }
+	          return result;
+	    }
 }

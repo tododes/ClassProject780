@@ -41,7 +41,7 @@ public class LibraryControl {
             try {
                 printOptions();
                 //option = app.GetOptions.Option.createFromInt(dataReader.getInt());
-                option = GetOptions.createOptionFromDataReader(dataReader);
+                option = dataReader.createOption();
                 switch (option) {
                 case ADD_BOOK:
                     addBook();
