@@ -5,6 +5,7 @@ package utils;
 import data.Book;
 import data.Library;
 import data.Periodical;
+import data.AlphabeticalComparator;
 
 public class LibraryUtils {
 
@@ -18,7 +19,7 @@ public class LibraryUtils {
     
     private static void printPublications(Library library, Class<?> cl) {
     	long countPublications = library.getPublications().values().stream()
-    			.filter(cl::isInstance).sorted(new Library.AlphabeticalComparator())
+    			.filter(cl::isInstance).sorted(new AlphabeticalComparator())
     			.peek(System.out::println).count();
     	if(countPublications == 0) {
     		System.out.println("No type publication was found in the library: " + cl.getSimpleName());
