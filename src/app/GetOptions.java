@@ -7,6 +7,8 @@ package app;
 
 import java.util.NoSuchElementException;
 
+import utils.DataReader;
+
 /**
  *
  * @author Nimisha
@@ -35,17 +37,18 @@ public class GetOptions {
             return value + " - " + descriptionPeriodical;
 
         }
-          
-        public static Option createFromInt(int option) throws NoSuchElementException {
-            Option result = null;
-            try {
-                result = Option.values()[option];
-            } catch(ArrayIndexOutOfBoundsException exception) {
-                throw new NoSuchElementException("No element specified ID"+exception);
-            }
-              
-            return result;
-        }
+    
+        
     }
     
+    public static Option createOptionFromDataReader(DataReader dataReader) throws NoSuchElementException{
+    	  Option result = null;
+          try {
+              result = Option.values()[dataReader.getInt()];
+          } catch(ArrayIndexOutOfBoundsException exception) {
+              throw new NoSuchElementException("No element specified ID"+exception);
+          }
+            
+          return result;
+    }
 }

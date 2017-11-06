@@ -11,6 +11,7 @@ import data.Periodical;
 import utils.DataReader;
 import utils.FileManager;
 import utils.LibraryUtils;
+import app.GetOptions;;
 
 public class LibraryControl {
 
@@ -35,11 +36,12 @@ public class LibraryControl {
     }
 
     public void controlLoop() {
-        app.GetOptions.Option option = null;
-        while (option != app.GetOptions.Option.EXIT) {
+        GetOptions.Option option = null;
+        while (option != GetOptions.Option.EXIT) {
             try {
                 printOptions();
-                option = app.GetOptions.Option.createFromInt(dataReader.getInt());
+                //option = app.GetOptions.Option.createFromInt(dataReader.getInt());
+                option = GetOptions.createOptionFromDataReader(dataReader);
                 switch (option) {
                 case ADD_BOOK:
                     addBook();
@@ -74,7 +76,7 @@ public class LibraryControl {
 	
 	private void printOptions() {
         System.out.println("Select an option:  ");
-        for(app.GetOptions.Option o : app.GetOptions.Option.values()) {
+        for(GetOptions.Option o : GetOptions.Option.values()) {
             System.out.println(o);
         }
     }
