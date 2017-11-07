@@ -21,7 +21,7 @@ public class Library implements Serializable {
 	private Library() {
 		publications = new HashMap<>();
 		users = new HashMap<>();
-		fileManager = new FileManager();
+		fileManager = FileManager.getInstance();
 	}
 	
 	public static Library getInstance(){
@@ -33,7 +33,7 @@ public class Library implements Serializable {
 	public static Library getInstanceFromSaveFile(){
 		if(instance == null){
 			if(fileManager == null)
-				fileManager = new FileManager();
+				fileManager = FileManager.getInstance();
 			try {
 				instance = fileManager.readLibraryFromFile();
 			} catch (FileNotFoundException e) {

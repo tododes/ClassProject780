@@ -4,7 +4,8 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import app.GetOptions.Option;
+import Menu.MenuItem;
+import app.GetOptions;
 import data.LibraryUser;
 import data.PublicationParameters;
 import data.PublicationFactory;
@@ -12,12 +13,20 @@ import data.Publication;
 
 public class DataReader {
 
+	private static DataReader instance;
+	
 	private Scanner scanner;
 	PublicationParameters parameters = new PublicationParameters();
-        PublicationFactory factory = new PublicationFactory();
+    PublicationFactory factory = new PublicationFactory();
         
-	public DataReader(){
+	private DataReader(){
 		scanner = new Scanner(System.in);
+	}
+	
+	public static DataReader getInstance(){
+		if(instance == null)
+			instance = new DataReader();
+		return instance;
 	}
 	
 	public void close(){
@@ -100,13 +109,13 @@ public class DataReader {
         return new LibraryUser(firstName, lastName, socialSecurityNumber);
     }
 	
-	   public Option createOption() throws NoSuchElementException{
-	    	  Option result = null;
-	          try {
-	              result = Option.values()[getInt()];
-	          } catch(ArrayIndexOutOfBoundsException exception) {
-	              throw new NoSuchElementException("No element specified ID"+exception);
-	          }
-	          return result;
+	   public MenuItem getMenuItem() throws NoSuchElementException{
+		   MenuItem result = null;
+		   try {
+               result = GetOptions.getInstance().getMenuItemAt(getInt());
+           } catch(ArrayIndexOutOfBoundsException exception) {
+               throw new NoSuchElementException("No element specified ID"+exception);
+           }
+		   return result;
 	    }
 }

@@ -11,6 +11,18 @@ import data.Library;
 
 public class FileManager {
 	public static final String FILE_NAME = "Library.o";
+	
+	private static FileManager instance;
+	
+	private FileManager(){
+		
+	}
+	
+	public static FileManager getInstance(){
+		if(instance == null)
+			instance = new FileManager();
+		return instance;
+	}
     
     public void writeLibraryToFile(Library lib) {
         try(

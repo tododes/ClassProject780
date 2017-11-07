@@ -1,9 +1,13 @@
 package app;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
+import Menu.AddBookMenuItem;
+import Menu.MenuItem;
+import Menu.NullMenuItem;
 import data.Book;
 import data.Library;
 import data.LibraryUser;
@@ -21,11 +25,13 @@ public class LibraryControl {
 	private FileManager fileManager;
 	
 	private Library library;
+	private GetOptions options;
 	
 	private LibraryControl() {
-        dataReader = new DataReader();
-        fileManager = new FileManager();
+        dataReader = DataReader.getInstance();
+        fileManager = FileManager.getInstance();
         library = Library.getInstanceFromSaveFile();
+        options = GetOptions.getInstance();
 		System.out.println("Data loaded from the file ");
     }
 
@@ -36,34 +42,12 @@ public class LibraryControl {
     }
 
     public void controlLoop() {
-        GetOptions.Option option = null;
-        while (option != GetOptions.Option.EXIT) {
+        MenuItem currentMenuItem = new NullMenuItem();
+        while (currentMenuItem.getIndex() != 0){
             try {
                 printOptions();
-                //option = app.GetOptions.Option.createFromInt(dataReader.getInt());
-                option = dataReader.createOption();
-                switch (option) {
-                case ADD_BOOK:
-                    addBook();
-                    break;
-                case ADD_PERIODICAL:
-                    addPeriodical();
-                    break;
-                case PRINT_BOOKS:
-                    printBooks();
-                    break;
-                case PRINT_PERIODICALS:
-                    printPeriodicals();
-                    break;
-                case ADD_USER:
-                    addUser();
-                    break;
-                case PRINT_USERS:
-                    printUsers();
-                    break;
-                case EXIT:
-                    exit();
-                }
+                currentMenuItem = dataReader.getMenuItem();
+                currentMenuItem.OnSelected();
             } catch (InputMismatchException exception) {
                 System.out.println("Incorrect data entered, no publication added."+exception);
             } catch (NumberFormatException | NoSuchElementException e) {
@@ -76,9 +60,7 @@ public class LibraryControl {
 	
 	private void printOptions() {
         System.out.println("Select an option:  ");
-        for(GetOptions.Option o : GetOptions.Option.values()) {
-            System.out.println(o);
-        }
+        options.printOptions();
     }
   
     private void addBook() {
