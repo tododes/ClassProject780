@@ -38,10 +38,13 @@ public class Library implements Serializable {
 				instance = fileManager.readLibraryFromFile();
 			} catch (FileNotFoundException e) {
 				instance = getInstance();
+				System.out.println("New library database created.");
 			} catch (ClassNotFoundException e) {
 				instance = getInstance();
+				System.out.println("New library database created.");
 			} catch (IOException e) {
 				instance = getInstance();
+				System.out.println("New library database created.");
 			}
 		}
 		return instance;
