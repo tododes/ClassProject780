@@ -63,17 +63,13 @@ public class LibraryControl {
         options.printOptions();
     }
   
-    private void addBook() {
-        library.addPublication(dataReader.readBook());
-    }
+    
   
     private void printBooks() {
         LibraryUtils.printBooks(library);
     }
   
-    private void addPeriodical() {
-        library.addPublication(dataReader.readPeriodical());
-    }
+    
   
     private void printPeriodicals() {
         LibraryUtils.printPeriodicals(library);

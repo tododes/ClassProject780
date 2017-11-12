@@ -8,16 +8,14 @@ import Menu.MenuItem;
 import app.GetOptions;
 import data.LibraryUser;
 import data.PublicationParameters;
-import data.PublicationFactory;
-import data.Publication;
+
 
 public class DataReader {
 
 	private static DataReader instance;
 	
-	private Scanner scanner;
-	PublicationParameters parameters = new PublicationParameters();
-    PublicationFactory factory = new PublicationFactory();
+	private final Scanner scanner;
+        
         
 	private DataReader(){
 		scanner = new Scanner(System.in);
@@ -45,7 +43,8 @@ public class DataReader {
             return number;
         }
 	
-	public Publication readBook() throws InputMismatchException {
+	public PublicationParameters getUserInputBook() throws InputMismatchException {
+            PublicationParameters parameters = new PublicationParameters();
             System.out.println("Title: ");
             parameters.title = scanner.nextLine();
             System.out.println("Author: ");
@@ -66,11 +65,11 @@ public class DataReader {
                 throw exception;
             }
  
-            return factory.getPublication("Book",parameters);
+            return parameters;
         }
 	
-	public Publication readPeriodical() throws InputMismatchException {
-
+	public PublicationParameters getUserInputPeriodical() throws InputMismatchException {
+            PublicationParameters parameters = new PublicationParameters();
         System.out.println("Title: ");
         parameters.title = scanner.nextLine();
         System.out.println("Publishing house: ");
@@ -95,7 +94,7 @@ public class DataReader {
             throw exception;
         }
  
-        return factory.getPublication("Periodical",parameters);
+        return parameters;
     }
 	
 	public LibraryUser readAndCreateLibraryUser() {
