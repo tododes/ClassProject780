@@ -32,7 +32,6 @@ public class LibraryControl {
         fileManager = FileManager.getInstance();
         library = Library.getInstanceFromSaveFile();
         options = GetOptions.getInstance();
-		System.out.println("Data loaded from the file ");
     }
 
     public static LibraryControl getInstance(){
