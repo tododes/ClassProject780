@@ -61,30 +61,4 @@ public class LibraryControl {
         System.out.println("Select an option:  ");
         options.printOptions();
     }
-  
-    
-  
-    private void printBooks() {
-        LibraryUtils.printBooks(library);
-    }
-  
-    
-  
-    private void printPeriodicals() {
-        LibraryUtils.printPeriodicals(library);
-    }
-    
-    private void addUser() {
-        LibraryUser user = dataReader.readAndCreateLibraryUser();
-        library.addUser(user);
-    }
-     
-    private void printUsers() {
-        LibraryUtils.printUsers(library);
-    }
-    
-    private void exit() {
-        fileManager.writeLibraryToFile(library);
-    }
-    
 }
