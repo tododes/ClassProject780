@@ -19,6 +19,7 @@ import app.GetOptions;;
 
 public class LibraryControl {
 
+	private static final int EXIT_NUMBER = 0;
 	private static LibraryControl instance;
 
 	private DataReader dataReader;
@@ -42,7 +43,7 @@ public class LibraryControl {
 
     public void controlLoop() {
         MenuItem currentMenuItem = new NullMenuItem();
-        while (currentMenuItem.getIndex() != 0){
+        while (currentMenuItem.getIndex() != EXIT_NUMBER){
             try {
                 printOptions();
                 currentMenuItem = dataReader.getMenuItem();
